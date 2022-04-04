@@ -1,0 +1,21 @@
+package br.com.fiap.jpa.dao.impl;
+
+import br.com.fiap.jpa.entity.Aluno;
+
+public class LivrooDAOImpl extends HibernateGenericDAO<Aluno, Long> {
+
+	private static LivrooDAOImpl instance = null;
+	
+	public static LivrooDAOImpl getInstance() {
+		if (instance == null) {
+			instance = new LivrooDAOImpl();
+		}
+		
+		return instance;
+	}
+	
+	private LivrooDAOImpl() {
+		super(Aluno.class);
+	}
+
+}

@@ -1,0 +1,25 @@
+package br.com.fiap.main;
+
+import java.time.LocalDate;
+import br.com.fiap.entity.*;
+import br.com.fiap.service.*;
+import br.com.fiap.dao.*;
+import br.com.fiap.dao.impl.*;
+import br.com.fiap.service.impl.LivroServiceImpl;
+
+public class Main {
+
+	public static void main(String[] args) {
+		LivroServiceImpl livroService = LivroServiceImpl.getInstance();
+		
+		livroService.inserir(new Livro("Paradise of the Blind","Duong Thu Huong","0-4456-7287-0", LocalDate.of(1988, 2, 1)));
+		livroService.inserir(new Livro("El hereje","Miguel Delibes","0-9075-4377-4", LocalDate.of(1988, 10, 20)));
+		livroService.inserir(new Livro("If This Is a Man","Primo Levi","0-9186-6872-7", LocalDate.of(1979, 7, 4)));
+		
+		Livro livro = livroService.obter(3L);
+		
+		System.out.println(livro);
+		
+		livroService.remover(3L);
+	}
+}

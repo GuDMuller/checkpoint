@@ -1,0 +1,65 @@
+package br.com.fiap.entity;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_livro")
+@SequenceGenerator(name = "livro", sequenceName = "SQ_TB_LIVRO", allocationSize = 1)
+public class Livro {
+
+	private static final long serialVersionUID = 1L;
+
+	public Livro() {
+		this.ativo = true;
+		this.dataCadastro = LocalDateTime.now();
+		this.dataAtualizacao = LocalDateTime.now();
+	}
+	
+	public Livro(String nome, String matricula, String cpf, LocalDate dataNascimento) {
+		this();
+		this.nome = nome;
+		this.matricula = matricula;
+		this.cpf = cpf;
+		this.dataNascimento = dataNascimento;
+	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "livro")
+	private Long id;
+	
+	@Column(name = "ds_titulo", length = 80, nullable = false)
+	private String titulo;
+	
+	@Column(name = "ds_autor", length = 10, nullable = false, unique = true)
+	private String autor;
+	
+	@Column(name = "nr_isbn", length = 14, nullable = false, unique = true)
+	private String isbn;
+	
+	@Column(name = "dt_nascimento")
+	private LocalDate dataNascimento;
+	
+	@Column(name = "st_ativo")
+	private Boolean ativo;
+	
+	@Column(name = "dt_cadastro")
+	private LocalDateTime dataCadastro;
+	
+	@Column(name = "dt_atualizacao")
+	private LocalDateTime dataAtualizacao;
+	
+	@OneToOne(mappedBy="aluno", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Endereco endereco;
+}
