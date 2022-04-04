@@ -1,7 +1,6 @@
 package br.com.fiap.main;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.Query;
 
@@ -23,20 +22,18 @@ public class Main {
 		
 		Livro livro = livroService.obter(1L);
 		Livro livro1 = livroService.obter(2L);
-		
 
+		
 		livroService.remover(1L);
-		
-		livro3.setDataPublicacao(LocalDate.of(2022, 3, 10));
-		livroService.atualizar(livro3);
 
-		List<Livro> livros = livroService.listar();
+		Query query = livroService.atualizar("UPDATE Employee e SET e.salary = e.salary + :increment "
+	              + "WHERE e.dept = :dept");
+	      query.setParameter("increment", 500d);
+	      query.setParameter("dept", "IT");
 		
-		for(Livro item : livros) {
-			System.out.println(item);
-		}
-		
-
+		System.out.println(livro);
+		System.out.println(livro1);
+		System.out.println(livro3);
 		
 	}
 }

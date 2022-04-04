@@ -24,18 +24,14 @@ public class Main {
 		Livro livro = livroService.obter(1L);
 		Livro livro1 = livroService.obter(2L);
 		
-
+		List<Livro> livros = livroService.listar();
+		
 		livroService.remover(1L);
 		
 		livro3.setDataPublicacao(LocalDate.of(2022, 3, 10));
 		livroService.atualizar(livro3);
 
-		List<Livro> livros = livroService.listar();
-		
-		for(Livro item : livros) {
-			System.out.println(item);
-		}
-		
+
 
 		
 	}

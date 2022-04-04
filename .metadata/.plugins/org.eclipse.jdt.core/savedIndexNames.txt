@@ -1,3 +1,2 @@
 INDEX VERSION 1.131+D:\checkpoint\.metadata\.plugins\org.eclipse.jdt.core
-4032104904.index
 550723805.index
