@@ -21,20 +21,21 @@ public class Main {
 		livroService.inserir(new Livro("Why persona is the best game","Muller","0-9075-4377-4", LocalDate.of(2008, 6, 10)));
 		Livro livro3 = new Livro("Top 10 frases gura: A","Gustavo","0-9186-6872-7", LocalDate.of(2019, 7, 4));
 		
-		Livro livro = livroService.obter(1L);
-		Livro livro1 = livroService.obter(2L);
-		
 
 		livroService.remover(1L);
 		
 		livro3.setDataPublicacao(LocalDate.of(2022, 3, 10));
 		livroService.atualizar(livro3);
-
-		List<Livro> livros = livroService.listar();
 		
+		List<Livro> livros = livroService.listar();
 		for(Livro item : livros) {
 			System.out.println(item);
 		}
+		 
+		
+
+
+
 		
 
 		
